@@ -18,9 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
+            'ability' => \Laravel\Sanctum\Http\Middleware\CheckForAnyAbility::class, // Vérifie AU MOINS une ability
+            'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class, // Vérifie TOUTES les abilities
         ]);
-
-        //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
